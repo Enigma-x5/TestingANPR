@@ -4,9 +4,13 @@ from sqlalchemy.orm import declarative_base
 from src.config import settings
 
 # Convert postgresql:// to postgresql+asyncpg:// if needed
+# Also strip out sslmode parameter as asyncpg doesn't support it
 database_url = settings.DATABASE_URL
 if database_url.startswith("postgresql://"):
     database_url = database_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+# Remove sslmode query parameter (asyncpg handles SSL automatically)
+if "?sslmode=" in database_url:
+    database_url = database_url.split("?sslmode=")[0]
 
 engine = create_async_engine(
     database_url,

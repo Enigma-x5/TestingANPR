@@ -24,7 +24,9 @@ class User(Base):
     username: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
     role: Mapped[UserRole] = mapped_column(
-        SQLEnum(UserRole, name="user_role"), nullable=False, default=UserRole.CLERK
+        SQLEnum(UserRole, name="user_role", values_callable=lambda x: [e.value for e in x]), 
+        nullable=False, 
+        default=UserRole.CLERK
     )
     is_active: Mapped[bool] = mapped_column(default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
