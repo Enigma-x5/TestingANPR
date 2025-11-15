@@ -249,7 +249,13 @@ See `docs/READY_SWITCH.md` for detailed instructions on:
 
 ## Recent Changes
 
-**November 15, 2025**
+**November 15, 2025 (Latest)**
+- ✅ Fixed frontend auto-refresh loop by changing `vite.config.ts` to use `allowedHosts: true`
+- ✅ Fixed bcrypt compatibility by downgrading to version 4.1.2
+- ✅ Resolved login functionality - admin@example.com authentication working
+- ✅ All workflows stable and running correctly
+
+**November 15, 2025 (Initial Setup)**
 - Initial Replit setup completed
 - Configured for selfhost mode
 - Set up Replit PostgreSQL database
@@ -258,7 +264,6 @@ See `docs/READY_SWITCH.md` for detailed instructions on:
 - Configured three workflows (frontend, backend, redis)
 - Fixed database connection to use asyncpg
 - Fixed missing imports (httpx, python-multipart, status)
-- All services running successfully
 - Created transition guide for production deployment
 
 ## Contact & Support
