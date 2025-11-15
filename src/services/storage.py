@@ -1,15 +1,17 @@
 from abc import ABC, abstractmethod
 from datetime import timedelta
 from io import BytesIO
-from typing import BinaryIO
+from typing import BinaryIO, TYPE_CHECKING
 import uuid
 
 from minio import Minio
-from supabase import create_client, Client
 import httpx
 
 from src.config import settings
 from src.logging_config import get_logger
+
+if TYPE_CHECKING:
+    from supabase import Client
 
 logger = get_logger(__name__)
 
@@ -32,7 +34,11 @@ class StorageService(ABC):
 
 class SupabaseStorageService(StorageService):
     def __init__(self):
-        self.client: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_SERVICE_KEY)
+        try:
+            from supabase import create_client
+            self.client = create_client(settings.SUPABASE_URL, settings.SUPABASE_SERVICE_KEY)
+        except ImportError:
+            raise ImportError("supabase-py is required for Supabase mode. Install it with: pip install supabase")
 
     async def upload_file(
         self, file: BinaryIO, bucket: str, object_name: str, content_type: str = "application/octet-stream"
