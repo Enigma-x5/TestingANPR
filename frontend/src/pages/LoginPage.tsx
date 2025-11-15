@@ -69,7 +69,7 @@ export default function LoginPage() {
               )}
               
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium">Username</Label>
+                <Label htmlFor="email" className="text-sm font-medium">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -120,13 +120,13 @@ export default function LoginPage() {
               <div className="flex items-center justify-between p-3 rounded-lg bg-background/50 border border-border/50">
                 <div className="space-y-0.5">
                   <p className="text-xs text-muted-foreground font-medium">Admin Account</p>
-                  <p className="text-sm font-mono">admin / admin</p>
+                  <p className="text-sm font-mono">admin@example.com</p>
                 </div>
                 <Button
                   variant="ghost"
                   size="icon"
                   className="h-8 w-8"
-                  onClick={() => copyToClipboard('admin')}
+                  onClick={() => copyToClipboard('admin@example.com')}
                   type="button"
                 >
                   <Copy className="h-3.5 w-3.5" />
