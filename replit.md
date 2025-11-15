@@ -250,10 +250,11 @@ See `docs/READY_SWITCH.md` for detailed instructions on:
 ## Recent Changes
 
 **November 15, 2025 (Latest)**
-- ✅ Fixed frontend auto-refresh loop by changing `vite.config.ts` to use `allowedHosts: true`
+- ✅ **FIXED: Endless refresh loop** - Configured Vite HMR to use Replit's WebSocket proxy (wss protocol, port 443, REPLIT_DEV_DOMAIN host)
 - ✅ Fixed bcrypt compatibility by downgrading to version 4.1.2
 - ✅ Resolved login functionality - admin@example.com authentication working
 - ✅ All workflows stable and running correctly
+- ✅ Frontend now loads without constant reconnections
 
 **November 15, 2025 (Initial Setup)**
 - Initial Replit setup completed
