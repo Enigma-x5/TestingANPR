@@ -9,7 +9,12 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: 5000,
     strictPort: true,
-    hmr: false,
+    hmr: {
+      protocol: 'wss',
+      host: process.env.REPLIT_DEV_DOMAIN || 'localhost',
+      clientPort: 443,
+      timeout: 5000,
+    },
     allowedHosts: true,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(
