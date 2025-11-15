@@ -12,8 +12,13 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       clientPort: 5000,
     },
+    allowedHosts: [
+      "23441954-7e72-43ce-b327-832e7ef39f5d-00-1vcyclrqrtzrl.sisko.replit.dev",
+    ],
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react(), mode === "development" && componentTagger()].filter(
+    Boolean,
+  ),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
