@@ -16,6 +16,12 @@ export default defineConfig(({ mode }) => ({
       timeout: 5000,
     },
     allowedHosts: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(
     Boolean,

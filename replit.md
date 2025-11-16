@@ -26,7 +26,7 @@ Frontend (React + Vite) → Backend API (FastAPI) → PostgreSQL Database
 ### Admin Access
 - **Email**: admin@example.com
 - **Username**: admin
-- **Password**: Check your `ADMIN_PASSWORD` secret
+- **Password**: `admin123` (stored in `ADMIN_PASSWORD` secret)
 
 ### Environment Configuration
 - **Mode**: `selfhost` (using local/Replit resources)
@@ -34,6 +34,7 @@ Frontend (React + Vite) → Backend API (FastAPI) → PostgreSQL Database
 - **Redis**: Local Redis server
 - **Storage**: MinIO for file uploads
 - **CORS**: Allows all origins (development mode)
+- **Frontend API**: Configured via Vite proxy in `vite.config.ts` - forwards `/api` requests to backend on port 8000
 
 ## Project Structure
 
@@ -249,10 +250,14 @@ See `docs/READY_SWITCH.md` for detailed instructions on:
 
 ## Recent Changes
 
-**November 15, 2025 (Latest)**
+**November 16, 2025 (Latest)**
+- ✅ **FIXED: Frontend-Backend API connectivity** - Configured Vite proxy to forward `/api` requests from frontend (port 5000) to backend (port 8000), enabling proper API communication in both development and production environments
+- ✅ Login credentials confirmed: email `admin@example.com`, password `admin123`
+- ✅ All workflows running and stable
+
+**November 15, 2025**
 - ✅ **FIXED: Endless refresh loop** - Configured Vite HMR to use Replit's WebSocket proxy (wss protocol, port 443, REPLIT_DEV_DOMAIN host)
 - ✅ Fixed bcrypt compatibility by downgrading to version 4.1.2
-- ✅ Resolved login functionality - admin@example.com authentication working
 - ✅ All workflows stable and running correctly
 - ✅ Frontend now loads without constant reconnections
 
